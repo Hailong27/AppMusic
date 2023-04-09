@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class Login extends AppCompatActivity {
 
     TextView dang_ky_txt;
+    Button DangNhapbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,15 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         dang_ky_txt = (TextView) findViewById(R.id.dang_ky_txt);
+        DangNhapbtn = (Button)findViewById(R.id.DangNhapbtn);
+
+        DangNhapbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Login.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         dang_ky_txt.setOnClickListener(new View.OnClickListener() {
             @Override

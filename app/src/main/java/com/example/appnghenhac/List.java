@@ -2,9 +2,11 @@ package com.example.appnghenhac;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -58,6 +60,17 @@ public class List extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(List.this,MenuSecond.class);
                 startActivity(i);
+            }
+        });
+        list_playlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                PlayList playList_temp = (PlayList) playListAdapter.getItem(i);
+                Intent intent = new Intent(List.this,ListSong.class);
+                //based on item add info to intent
+                startActivity(intent);
+
+
             }
         });
     }

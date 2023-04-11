@@ -46,4 +46,5 @@ public class PlayListAdapter extends BaseAdapter {
 
         return viewPlaylist;
     }
+
 }

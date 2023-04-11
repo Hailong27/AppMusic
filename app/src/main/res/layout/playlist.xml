@@ -14,6 +14,7 @@
             android:gravity="center"
             >
             <ImageView
+                android:id="@+id/button_back"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/baseline_arrow_back_ios_24"
@@ -54,111 +55,112 @@
             android:backgroundTint="#00FFFF"
             />
     </LinearLayout>
-    <LinearLayout
+    <ListView
         android:layout_width="match_parent"
         android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:id="@+id/list_playlist"
         >
-        <!--        danh sach bai hat-->
-        <LinearLayout
+<!--        &lt;!&ndash;        danh sach bai hat&ndash;&gt;-->
+<!--        <LinearLayout-->
 
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            android:backgroundTint="@color/option_color"
-            android:background="@drawable/roundstyle"
-            android:layout_marginBottom="8dp"
-            >
-            <LinearLayout
-                android:layout_width="85dp"
-                android:layout_height="83dp"
-                android:lineHeight="83dp"
-                android:textSize="21dp"
-                android:gravity="center"
-                android:textColor="@color/text_color"
-                >
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:src="@drawable/hat"
-                    app:shapeAppearance="@style/circle"
-                    />
-            </LinearLayout>
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="83dp"-->
+<!--            android:backgroundTint="@color/option_color"-->
+<!--            android:background="@drawable/roundstyle"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            >-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="85dp"-->
+<!--                android:layout_height="83dp"-->
+<!--                android:lineHeight="83dp"-->
+<!--                android:textSize="21dp"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/text_color"-->
+<!--                >-->
+<!--                <com.google.android.material.imageview.ShapeableImageView-->
+<!--                    android:layout_width="72dp"-->
+<!--                    android:layout_height="72dp"-->
+<!--                    android:src="@drawable/hat"-->
+<!--                    app:shapeAppearance="@style/circle"-->
+<!--                    />-->
+<!--            </LinearLayout>-->
 
-            <TextView
-                android:layout_width="275dp"
-                android:layout_height="83dp"
-                android:layout_marginLeft="11dp"
-                android:lineHeight="83dp"
-                android:textSize="21dp"
-                android:text="Danh sách bài hát của bạn"
-                android:gravity="center_vertical"
-                android:textColor="@color/text_color"
-                ></TextView>
-            <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="83dp"
-                android:lineHeight="83dp"
-                android:textSize="21dp"
-                android:gravity="center_vertical"
-                android:textColor="@color/text_color"
-                >
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/baseline_do_not_disturb_on_24"
-                    >
-                </ImageView>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
+<!--            <TextView-->
+<!--                android:layout_width="275dp"-->
+<!--                android:layout_height="83dp"-->
+<!--                android:layout_marginLeft="11dp"-->
+<!--                android:lineHeight="83dp"-->
+<!--                android:textSize="21dp"-->
+<!--                android:text="Danh sách bài hát của bạn"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:textColor="@color/text_color"-->
+<!--                ></TextView>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="83dp"-->
+<!--                android:lineHeight="83dp"-->
+<!--                android:textSize="21dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:textColor="@color/text_color"-->
+<!--                >-->
+<!--                <ImageView-->
+<!--                    android:layout_width="23dp"-->
+<!--                    android:layout_height="23dp"-->
+<!--                    android:src="@drawable/baseline_do_not_disturb_on_24"-->
+<!--                    >-->
+<!--                </ImageView>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
 
-            android:layout_width="match_parent"
-            android:layout_height="83dp"
-            android:backgroundTint="@color/option_color"
-            android:background="@drawable/roundstyle"
-            >
-            <LinearLayout
-                android:layout_width="85dp"
-                android:layout_height="83dp"
-                android:lineHeight="83dp"
-                android:textSize="21dp"
-                android:gravity="center"
-                android:textColor="@color/text_color"
-                >
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:src="@drawable/hat"
-                    app:shapeAppearance="@style/circle"
-                    />
-            </LinearLayout>
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="83dp"-->
+<!--            android:backgroundTint="@color/option_color"-->
+<!--            android:background="@drawable/roundstyle"-->
+<!--            >-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="85dp"-->
+<!--                android:layout_height="83dp"-->
+<!--                android:lineHeight="83dp"-->
+<!--                android:textSize="21dp"-->
+<!--                android:gravity="center"-->
+<!--                android:textColor="@color/text_color"-->
+<!--                >-->
+<!--                <com.google.android.material.imageview.ShapeableImageView-->
+<!--                    android:layout_width="72dp"-->
+<!--                    android:layout_height="72dp"-->
+<!--                    android:src="@drawable/hat"-->
+<!--                    app:shapeAppearance="@style/circle"-->
+<!--                    />-->
+<!--            </LinearLayout>-->
 
-            <TextView
-                android:layout_width="275dp"
-                android:layout_height="83dp"
-                android:layout_marginLeft="11dp"
-                android:lineHeight="83dp"
-                android:textSize="21dp"
-                android:text="Danh sách bài hát của bạn"
-                android:gravity="center_vertical"
-                android:textColor="@color/text_color"
-                ></TextView>
-            <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="83dp"
-                android:lineHeight="83dp"
-                android:textSize="21dp"
-                android:gravity="center_vertical"
-                android:textColor="@color/text_color"
-                >
-                <ImageView
-                    android:layout_width="23dp"
-                    android:layout_height="23dp"
-                    android:src="@drawable/baseline_do_not_disturb_on_24"
-                    >
-                </ImageView>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+<!--            <TextView-->
+<!--                android:layout_width="275dp"-->
+<!--                android:layout_height="83dp"-->
+<!--                android:layout_marginLeft="11dp"-->
+<!--                android:lineHeight="83dp"-->
+<!--                android:textSize="21dp"-->
+<!--                android:text="Danh sách bài hát của bạn"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:textColor="@color/text_color"-->
+<!--                ></TextView>-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="83dp"-->
+<!--                android:lineHeight="83dp"-->
+<!--                android:textSize="21dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:textColor="@color/text_color"-->
+<!--                >-->
+<!--                <ImageView-->
+<!--                    android:layout_width="23dp"-->
+<!--                    android:layout_height="23dp"-->
+<!--                    android:src="@drawable/baseline_do_not_disturb_on_24"-->
+<!--                    >-->
+<!--                </ImageView>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--&lt;!&ndash;        end danh sach &ndash;&gt;-->
+    </ListView>
 </LinearLayout>

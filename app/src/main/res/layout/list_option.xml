@@ -24,7 +24,7 @@
         </TextView>
         <!--        Option 1 -->
         <LinearLayout
-
+            android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="83dp"
             android:backgroundTint="@color/option_color"
@@ -58,6 +58,7 @@
         </LinearLayout>
         <!--        Option 2 -->
         <LinearLayout
+            android:id="@+id/list_favorite"
             android:backgroundTint="@color/option_color"
             android:background="@drawable/roundstyle"
             android:layout_marginTop="11dp"
@@ -91,6 +92,7 @@
         </LinearLayout>
         <!--        Option 3-->
         <LinearLayout
+            android:id="@+id/list_download"
             android:backgroundTint="@color/option_color"
             android:background="@drawable/roundstyle"
             android:layout_marginTop="11dp"

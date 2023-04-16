@@ -25,12 +25,12 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/phone_number_edit_text"
+            android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="170dp"
-            android:hint="Số điện thoại"
-            android:inputType="phone"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             android:padding="8dp"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -57,6 +57,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/dang_nhap_btn"
             android:layout_width="234dp"
             android:layout_height="66dp"
             android:layout_marginLeft="68dp"

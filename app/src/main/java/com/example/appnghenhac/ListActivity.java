@@ -2,7 +2,6 @@ package com.example.appnghenhac;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,7 @@ import com.example.appnghenhac.models.PlayList;
 
 import java.util.ArrayList;
 
-public class List extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
     ImageView button_back;
     ListView list_playlist;
     PlayListAdapter playListAdapter;
@@ -58,7 +57,7 @@ public class List extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(List.this,MenuSecond.class);
+                Intent i = new Intent(ListActivity.this,MenuSecond.class);
                 startActivity(i);
             }
         });
@@ -66,7 +65,7 @@ public class List extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 PlayList playList_temp = (PlayList) playListAdapter.getItem(i);
-                Intent intent = new Intent(List.this,ListSong.class);
+                Intent intent = new Intent(ListActivity.this,ListSong.class);
                 //based on item add info to intent
                 startActivity(intent);
 

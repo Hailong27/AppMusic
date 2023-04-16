@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".Login"
+    android:fitsSystemWindows="true">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -17,11 +18,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:text="Đăng nhập"
             android:textAlignment="center"
             android:textColor="@color/back"
-            android:textSize="32sp"
+            android:textSize="36sp"
             android:textStyle="bold" />
 
         <EditText
@@ -39,7 +40,7 @@
             android:id="@+id/password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="290dp"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:padding="8dp"
@@ -50,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="305dp"
+            android:layout_marginTop="350dp"
             android:text="Quên mật khẩu?"
             android:textColor="@color/back"
             android:textSize="22sp"
@@ -61,15 +62,14 @@
             android:layout_width="234dp"
             android:layout_height="66dp"
             android:layout_marginLeft="68dp"
-            android:layout_marginTop="350dp"
+            android:layout_marginTop="400dp"
             android:text="Đăng nhập"
             android:textSize="25sp" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="500dp"
-            android:text="Nếu bạn chưa có tài khoản,"
+            android:layout_marginTop="550dp"
+            android:text="Nếu bạn chưa có tài khoản"
             android:textAlignment="center"
             android:textColor="#D43A3737"
             android:textSize="25dp"
@@ -79,8 +79,8 @@
             android:id="@+id/dang_ky_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="530dp"
-            android:layout_marginLeft="145dp"
+            android:layout_marginTop="580dp"
+            android:layout_gravity="center_horizontal"
             android:text="Đăng ký"
             android:textColor="#C9F80505"
             android:textSize="25dp"

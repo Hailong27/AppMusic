@@ -53,135 +53,143 @@ public class MainActivity extends AppCompatActivity{
         mediaPlayer.start();
         mediaPlayer.setLooping(isRepeat);
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                if (isRepeat) {
-                    mediaPlayer.seekTo(0);
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            if (isRepeat) {
+                mediaPlayer.seekTo(0);
+                mediaPlayer.start();
+            } else {
+                String nextSongPath = "android.resource://" + getPackageName() + "/raw/haanhtuan";
+                try {
+                    mediaPlayer.reset();
+                    mediaPlayer.setDataSource(MainActivity.this, Uri.parse(nextSongPath));
+                    mediaPlayer.prepare();
                     mediaPlayer.start();
-                } else {
-                    String nextSongPath = "android.resource://" + getPackageName() + "/raw/haanhtuan";
-                    try {
-                        mediaPlayer.reset();
-                        mediaPlayer.setDataSource(MainActivity.this, Uri.parse(nextSongPath));
-                        mediaPlayer.prepare();
-                        mediaPlayer.start();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
-        });
+        }
+    });
 
+    int time = mediaPlayer.getDuration() / 1000;
+    int minute = time / 60;
+    int second = time % 60;
+    String t = String.format("%02d:%02d", minute, second);
+    timeMusic.setText(t);
 
-        int time = mediaPlayer.getDuration() / 1000;
-        int minute = time / 60;
-        int second = time % 60;
-        String t = String.format("%02d:%02d", minute, second);
-        timeMusic.setText(t);
+    Handler mHandler = new Handler();
+    Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            int time = mediaPlayer.getDuration()/1000;
+            int currentPositionInMillis = mediaPlayer.getCurrentPosition();
+            int currentPositionInSec = currentPositionInMillis / 1000;
+            if(currentPositionInSec > time) currentPositionInSec = time;
+            int minutes = currentPositionInSec / 60;
+            int seconds = currentPositionInSec % 60;
+            String currentPositionFormatted = String.format("%02d:%02d", minutes, seconds);
+            timeCurrent.setText(currentPositionFormatted);
 
-        Handler mHandler = new Handler();
-        Runnable mRunnable = new Runnable() {
-            @Override
-            public void run() {
-                int time = mediaPlayer.getDuration()/1000;
-                int currentPositionInMillis = mediaPlayer.getCurrentPosition();
-                int currentPositionInSec = currentPositionInMillis / 1000;
-                if(currentPositionInSec > time) currentPositionInSec = time;
-                int minutes = currentPositionInSec / 60;
-                int seconds = currentPositionInSec % 60;
-                String currentPositionFormatted = String.format("%02d:%02d", minutes, seconds);
-                timeCurrent.setText(currentPositionFormatted);
+            ViewGroup.LayoutParams layoutParams = line_music.getLayoutParams();
+            layoutParams.width = currentPositionInMillis * 380/time;
+            layoutParams.width = currentPositionInSec * 955/time;
+            line_music.setLayoutParams(layoutParams);
+            dot_change.layout(currentPositionInSec * 955/time+50, dot_change.getTop(), currentPositionInSec * 955/time + 50 + dot_change.getWidth(), dot_change.getBottom());
+             mHandler.postDelayed(this, 100);
+        }
+    };
+    mHandler.postDelayed(mRunnable, 100);
 
-                ViewGroup.LayoutParams layoutParams = line_music.getLayoutParams();
-                layoutParams.width = currentPositionInSec * 955/time;
-                line_music.setLayoutParams(layoutParams);
-                dot_change.layout(currentPositionInSec * 955/time+50, dot_change.getTop(), currentPositionInSec * 955/time + 50 + dot_change.getWidth(), dot_change.getBottom());
-
-                mHandler.postDelayed(this, 100);
-            }
-        };
-        mHandler.postDelayed(mRunnable, 100);
-
-        choi_nhac.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (choi_nhac.getDrawable().getConstantState() ==
+    choi_nhac.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (choi_nhac.getDrawable().getConstantState() ==
                     getResources().getDrawable(R.drawable.baseline_play_circle_outline_24).getConstantState()) {
-                    disk_img.startAnimation(animation);
-                    choi_nhac.setImageResource(R.drawable.baseline_pause_circle_outline_24);
-                } else {
-                    mediaPlayer.pause();
-                    animation.cancel();
-                    choi_nhac.setImageResource(R.drawable.baseline_play_circle_outline_24);
-                }
+                mediaPlayer.start();
+                disk_img.startAnimation(animation);
+                choi_nhac.setImageResource(R.drawable.baseline_pause_circle_outline_24);
+            } else {
+                mediaPlayer.pause();
+                animation.cancel();
+                choi_nhac.setImageResource(R.drawable.baseline_play_circle_outline_24);
             }
-        });
+        }
+    });
 
-        previous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String nextSongPath = "android.resource://" + getPackageName() + "/raw/conhautrondoi";
-                try {
-                    mediaPlayer.reset();
-                    mediaPlayer.setDataSource(MainActivity.this, Uri.parse(nextSongPath));
-                    mediaPlayer.prepare();
-                    mediaPlayer.start();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+    previous.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String nextSongPath = "android.resource://" + getPackageName() + "/raw/conhautrondoi";
+            try {
+                mediaPlayer.reset();
+                mediaPlayer.setDataSource(MainActivity.this, Uri.parse(nextSongPath));
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
+        }
+    });
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String nextSongPath = "android.resource://" + getPackageName() + "/raw/dencungtan";
-                try {
-                    mediaPlayer.reset();
-                    mediaPlayer.setDataSource(MainActivity.this, Uri.parse(nextSongPath));
-                    mediaPlayer.prepare();
-                    mediaPlayer.start();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+    next.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String nextSongPath = "android.resource://" + getPackageName() + "/raw/dencungtan";
+            try {
+                mediaPlayer.reset();
+                mediaPlayer.setDataSource(MainActivity.this, Uri.parse(nextSongPath));
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
+        }
+    });
 
-        shuffle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(shuffle.getAlpha() < 1){
-                    shuffle.setAlpha(1f);
-                } else{
-                    shuffle.setAlpha(0.5f);
-                }
+    shuffle.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(shuffle.getAlpha() < 1){
+                shuffle.setAlpha(1f);
+            } else{
+                shuffle.setAlpha(0.5f);
             }
-        });
+        }
+    });
 
-        repeat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isRepeat = !isRepeat;
-                if(repeat.getAlpha() < 1){
-                    repeat.setAlpha(1f);
-                } else{
-                    repeat.setAlpha(0.5f);
-                }
+    repeat.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            isRepeat = !isRepeat;
+            if(repeat.getAlpha() < 1){
+                repeat.setAlpha(1f);
+            } else{
+                repeat.setAlpha(0.5f);
             }
-        });
+        }
+    });
 
-        tym.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (tym.getDrawable().getConstantState() ==
-                        getResources().getDrawable(R.drawable.baseline_favorite_border_24).getConstantState()) {
-                    tym.setImageResource(R.drawable.baseline_favorite_24);
-                } else {
-                    tym.setImageResource(R.drawable.baseline_favorite_border_24);
-                }
+    tym.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if (tym.getDrawable().getConstantState() ==
+                    getResources().getDrawable(R.drawable.baseline_favorite_border_24).getConstantState()) {
+                tym.setImageResource(R.drawable.baseline_favorite_24);
+            } else {
+                tym.setImageResource(R.drawable.baseline_favorite_border_24);
             }
-        });
+        }
+    });
 
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent intent = new Intent(MainActivity.this, Login.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        }, 3000);
         dot_change.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -191,7 +199,6 @@ public class MainActivity extends AppCompatActivity{
                         // Lưu lại vị trí x khi người dùng chạm vào màn hình
                         lastX = (int) event.getRawX();
                         break;
-
                     case MotionEvent.ACTION_MOVE:
                         // Tính khoảng cách di chuyển theo phương ngang
                         int deltaX = (int) event.getRawX() - lastX;
@@ -209,17 +216,6 @@ public class MainActivity extends AppCompatActivity{
                 return true;
             }
         });
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent intent = new Intent(MainActivity.this, Login.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        }, 3000);
-
     }
 
 }
-

@@ -26,10 +26,17 @@
 
         </activity>
         <activity
+            android:name=".Frame4"
+            android:exported="false">
+        </activity>
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
             android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".StartScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,11 +45,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartScreen"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
-            android:exported="false" />
-    </application>
+            android:exported="false">
 
+        </activity>
+    </application>
 </manifest>

@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
     LoginResponse loginResponse;
     private static final String BASE_URL = "http:192.168.56.1:8082/api/";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +73,6 @@ public class Login extends AppCompatActivity {
                 Call<LoginResponse> call = apiService.login(body);
                 call.enqueue(new Callback<LoginResponse>() {
 
-
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                         if (response.isSuccessful()) {
@@ -102,7 +102,6 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(Login.this, Register.class);
                 startActivity(i);
-                System.out.println(email);
             }
         });
     }

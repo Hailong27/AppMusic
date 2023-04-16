@@ -63,7 +63,7 @@ public class MenuSecond extends AppCompatActivity {
         list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MenuSecond.this,List.class);
+                Intent i = new Intent(MenuSecond.this,ListActivity.class);
                 startActivity(i);
             }
         });
@@ -77,7 +77,7 @@ public class MenuSecond extends AppCompatActivity {
         list_download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MenuSecond.this,List.class);
+                Intent i = new Intent(MenuSecond.this,ListActivity.class);
                 startActivity(i);
             }
         });

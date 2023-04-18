@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="83dp"
+    android:backgroundTint="@color/option_color"
+    android:background="@drawable/roundstyle"
+    android:layout_marginBottom="8dp"
+    >
+    <LinearLayout
+        android:layout_width="85dp"
+        android:layout_height="83dp"
+        android:lineHeight="83dp"
+        android:textSize="21dp"
+        android:gravity="center"
+        android:textColor="@color/text_color"
+        >
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_music_f4"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@drawable/hat"
+            app:shapeAppearance="@style/circle"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="275dp"
+        android:layout_height="83dp"
+        android:layout_marginLeft="11dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/name_music_f4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:lineHeight="83dp"
+            android:textSize="21dp"
+            android:text="Danh sách bài hát của bạn"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_color"
+            ></TextView>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/name_singer_music_f4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineHeight="83dp"
+            android:textSize="17dp"
+            android:text="Danh sách bài hát của bạn"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_color"
+            ></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="83dp"
+        android:lineHeight="83dp"
+        android:textSize="21dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/text_color"
+        >
+        <ImageView
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:src="@drawable/baseline_do_not_disturb_on_24"
+            >
+        </ImageView>
+    </LinearLayout>
+</LinearLayout>

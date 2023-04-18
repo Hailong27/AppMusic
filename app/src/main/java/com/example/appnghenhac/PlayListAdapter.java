@@ -9,11 +9,12 @@ import com.example.appnghenhac.models.PlayList;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayListAdapter extends BaseAdapter {
-    final ArrayList<PlayList> playLists;
+    final List<PlayList> playLists;
 
-    public PlayListAdapter(ArrayList<PlayList> playLists) {
+    public PlayListAdapter(List<PlayList> playLists) {
         this.playLists = playLists;
     }
 

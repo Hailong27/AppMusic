@@ -2,12 +2,15 @@ package com.example.appnghenhac;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appnghenhac.models.LoginRequest;
 import com.example.appnghenhac.models.LoginResponse;
@@ -60,41 +63,57 @@ public class Login extends AppCompatActivity {
 //                    loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 //                    builder.addInterceptor(loggingInterceptor);
 //                }
-                retrofit = new Retrofit.Builder()
-                        .baseUrl(BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create())
+                if(email.getText().toString().isEmpty() || password.getText().toString().isEmpty()){
+                    System.out.println("Vao day roi");
+                    Toast.makeText(getApplicationContext(), "Bạn chưa nhập đầy đủ thông tin.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    retrofit = new Retrofit.Builder()
+                            .baseUrl(BASE_URL)
+                            .addConverterFactory(GsonConverterFactory.create())
 //                        .client(builder.build())
-                        .build();
-                APIService apiService = retrofit.create(APIService.class);
-                LoginRequest loginRequest = new LoginRequest("example3@example.com", "P@ssword123");
-                Gson gson = new Gson();
-                String json = gson.toJson(loginRequest);
-                RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
-                Call<LoginResponse> call = apiService.login(body);
-                call.enqueue(new Callback<LoginResponse>() {
+                            .build();
+                    APIService apiService = retrofit.create(APIService.class);
+                    LoginRequest loginRequest = new LoginRequest(email.getText().toString(), password.getText().toString());
+                    Gson gson = new Gson();
+                    String json = gson.toJson(loginRequest);
+                    RequestBody body = RequestBody.create(MediaType.parse("application/json"), json);
+                    Call<LoginResponse> call = apiService.login(body);
+                    call.enqueue(new Callback<LoginResponse>() {
 
-                    @Override
-                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        if (response.isSuccessful()) {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            if (response.isSuccessful()) {
 
-                            loginResponse = response.body();
-                            System.out.println("------------------------------------");
-                            String token = loginResponse.getToken();
-                            System.out.println(token);
+                                loginResponse = response.body();
+                                System.out.println("------------------------------------");
+                                String token = loginResponse.getToken();
+                                System.out.println(token);
+                                SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("token", token);
+                                editor.apply();
+                                Intent i = new Intent(Login.this,Frame4.class);
+                                startActivity(i);
 
-                            // Xử lý dữ liệu trả về ở đây
-                        } else {
-                            // Xử lý lỗi ở đây
-                            System.out.println("day");
+
+                                // Xử lý dữ liệu trả về ở đây
+                            } else {
+                                // Xử lý lỗi ở đây
+                                Toast.makeText(getApplicationContext(), "Tài khoản không chính xác.", Toast.LENGTH_SHORT).show();
+                                System.out.println("day");
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<LoginResponse> call, Throwable t) {
-                        System.out.println("loi "+t.getMessage());
-                    }
-                });
-                System.out.println(email.getText());
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
+                            System.out.println("loi "+t.getMessage());
+                        }
+                    });
+                    System.out.println(email.getText());
+
+                }
+
             }
         });
         dang_ky_txt.setOnClickListener(new View.OnClickListener() {

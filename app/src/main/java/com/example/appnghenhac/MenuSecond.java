@@ -43,7 +43,7 @@ public class MenuSecond extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     singers = response.body();
                     System.out.println("--------------------------------");
-                    System.out.println(singers.get(0).name);
+                    System.out.println(singers.get(0).nameSinger);
                     // Xử lý dữ liệu trả về ở đây
                 } else {
                     // Xử lý lỗi ở đây

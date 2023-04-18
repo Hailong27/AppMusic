@@ -1,6 +1,7 @@
 package com.example.appnghenhac;
 
 import com.example.appnghenhac.models.LoginResponse;
+import com.example.appnghenhac.models.Music;
 import com.example.appnghenhac.models.Singer;
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface APIService {
     @POST("account/login")
     Call<LoginResponse> login(@Body RequestBody json);
 
+    @GET("music")
+    Call<List<Music>> getMusic();
 }
 
 

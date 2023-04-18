@@ -21,7 +21,7 @@ import retrofit2.Call;
 public class MenuSecond extends AppCompatActivity {
     public LinearLayout list,list_favorite,list_download;
     private Retrofit retrofit;
-    private static final String BASE_URL = "https://64381476894c9029e8ce1a43.mockapi.io/";
+    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
     List<Singer> singers;
 
     @Override

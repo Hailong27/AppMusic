@@ -38,9 +38,12 @@ public class ListSong extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_song);
         btnBack = (ImageView) findViewById(R.id.list_song_back);
+//        Get id  playlist
         Intent i = getIntent();
-        int idSong = i.getIntExtra("idSong",0);
+        int idSong = i.getIntExtra("idPlaylist",0);
         System.out.println(idSong);
+
+//        API
         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         String token = sharedPreferences.getString("token", "");
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
@@ -76,8 +79,7 @@ public class ListSong extends AppCompatActivity {
 
             }
         });
-
-
+//  End API
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

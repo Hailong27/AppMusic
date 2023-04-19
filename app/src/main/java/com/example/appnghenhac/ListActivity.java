@@ -117,7 +117,7 @@ public class ListActivity extends AppCompatActivity {
                 PlayList playList_temp = (PlayList) playListAdapter.getItem(i);
                 Intent intent = new Intent(ListActivity.this,ListSong.class);
                 //based on item add info to intent
-                intent.putExtra("idSong", playList_temp.id);
+                intent.putExtra("idPlaylist", playList_temp.id);
                 startActivity(intent);
 
 

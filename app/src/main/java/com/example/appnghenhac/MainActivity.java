@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,27 +21,72 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.appnghenhac.models.LoginRequest;
+import com.example.appnghenhac.models.LoginResponse;
+import com.example.appnghenhac.models.Music;
+import com.google.gson.Gson;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity{
 
+    private Retrofit retrofit;
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
     ImageView disk_img, choi_nhac, shuffle, repeat, tym, dot_change, previous, next;
     TextView timeMusic, timeCurrent;
     View line_music;
     private int lastX;
+    private Music music;
     private boolean isRepeat = false;
     private Animation animation;
+    private  String urlMusic = "http://192.168.56.1:8082/music/";
 
     @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent i = getIntent();
+        int idMusic = i.getIntExtra("idSong",0);
 
-//        Intent i = getIntent();
-//        Integer position = Integer.parseInt(i.getStringExtra("index"));
-//
-//        System.out.println("xxx"+position);
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        APIService apiService = retrofit.create(APIService.class);
+
+
+        Call<Music> call = apiService.getMusicById(idMusic);
+        call.enqueue(new Callback<Music>() {
+
+
+            @Override
+            public void onResponse(Call<Music> call, Response<Music> response) {
+                if(response.isSuccessful()){
+                    music = response.body();
+                    System.out.println(urlMusic+music.fileMusic);
+                }
+                else {
+                    System.out.println("Loi");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Music> call, Throwable t) {
+
+            }
+        });
+
 
         disk_img = (ImageView)findViewById(R.id.disk_img);
         choi_nhac = (ImageView)findViewById(R.id.choi_nhac);
@@ -56,7 +103,14 @@ public class MainActivity extends AppCompatActivity{
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate);
         disk_img.startAnimation(animation);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.haanhtuan);
+//        MediaPlayer mediaPlayer = new MediaPlayer();
+//        try {
+//            mediaPlayer.setDataSource(urlMusic+music.fileMusic);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        System.out.println(music.getNameMusic());
+        MediaPlayer mediaPlayer = MediaPlayer.create(this,R.raw.haanhtuan);
         mediaPlayer.start();
         mediaPlayer.setLooping(isRepeat);
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -178,6 +232,7 @@ public class MainActivity extends AppCompatActivity{
     });
 
     tym.setOnClickListener(new View.OnClickListener() {
+
         @Override
         public void onClick(View view) {
             if (tym.getDrawable().getConstantState() ==
@@ -224,5 +279,11 @@ public class MainActivity extends AppCompatActivity{
             }
         });
     }
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        super.onNewIntent(intent);
+//
+//        // kiểm tra intent mới và xử lý tương ứng
+//    }
 
 }

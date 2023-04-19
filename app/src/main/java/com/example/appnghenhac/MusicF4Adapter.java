@@ -56,14 +56,7 @@ public class MusicF4Adapter extends BaseAdapter {
 //            ((ShapeableImageView) viewMusic.findViewById(R.id.image_music_f4)).setImageResource(music.singer.imageSinger);
 //        }
 
-//        viewMusic.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(context, MainActivity.class);
-//                i.putExtra("index", position);
-//                context.startActivity(i);
-//            }
-//        });
+
 
         return viewMusic;
     }

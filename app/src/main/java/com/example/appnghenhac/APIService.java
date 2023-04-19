@@ -18,6 +18,8 @@ public interface APIService {
     Call<List<Singer>> getSinger();
     @GET("music")
     Call<List<Music>> getMusic();
+    @GET("music/{id}")
+    Call<Music> getMusicById(@Path("id") int idMusic);
     @GET("playlist")
     Call<List<PlayList>> getPlaylist();
     @GET("playlist/{id}/musics")

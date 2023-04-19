@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.appnghenhac.models.Music;
+import com.example.appnghenhac.models.PlayList;
 import com.example.appnghenhac.models.Singer;
 
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class Frame4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frame4);
+        listMusic = (ListView) findViewById(R.id.list_music_f4);
 
         //        START API
         retrofit = new Retrofit.Builder()
@@ -52,7 +55,7 @@ public class Frame4 extends AppCompatActivity {
                     System.out.println("--------------------------------");
                     System.out.println(musics.get(0).getNameMusic());
                     musicF4Adapter = new MusicF4Adapter(musics);
-                    listMusic = (ListView) findViewById(R.id.list_music_f4);
+
                     listMusic.setAdapter(musicF4Adapter);
                     // Xử lý dữ liệu trả về ở đây
                 } else {
@@ -62,6 +65,18 @@ public class Frame4 extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Music>> call, Throwable t) {
+
+            }
+        });
+        listMusic.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Music music_temp = (Music) musicF4Adapter.getItem(i);
+                Intent intent = new Intent(Frame4.this,MainActivity.class);
+                //based on item add info to intent
+                intent.putExtra("idSong", music_temp.id);
+                startActivity(intent);
+
 
             }
         });
@@ -85,5 +100,6 @@ public class Frame4 extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 }

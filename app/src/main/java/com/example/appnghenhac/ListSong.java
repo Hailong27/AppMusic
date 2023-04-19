@@ -61,7 +61,7 @@ public class ListSong extends AppCompatActivity {
             public void onResponse(Call<List<Music>> call, Response<List<Music>> response) {
                 if(response.isSuccessful()){
                     musics = response.body();
-                    System.out.println(musics.get(0).nameMusic);
+//                    System.out.println(musics.get(0).nameMusic);
                     songAdaper = new SongAdaper(musics);
                     listSong = (ListView) findViewById(R.id.list_song);
                     listSong.setAdapter(songAdaper);

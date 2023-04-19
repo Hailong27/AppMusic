@@ -24,7 +24,7 @@ public class Frame4 extends AppCompatActivity {
     private Retrofit retrofit;
     private ListView listMusic;
     private MusicF4Adapter musicF4Adapter;
-    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
     private LinearLayout btnHome;
     private  LinearLayout btnListOption;
     private  LinearLayout btnUserInfo;

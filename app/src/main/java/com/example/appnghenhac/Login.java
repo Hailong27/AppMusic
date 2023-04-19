@@ -38,7 +38,7 @@ public class Login extends AppCompatActivity {
     EditText password;
     private Retrofit retrofit;
     LoginResponse loginResponse;
-    private static final String BASE_URL = "http:192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http:192.168.56.1:8082/api/";
 
 
     @Override

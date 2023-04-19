@@ -21,6 +21,9 @@ import retrofit2.Call;
 public class MenuSecond extends AppCompatActivity {
     public LinearLayout list,list_favorite,list_download;
     private Retrofit retrofit;
+
+    private LinearLayout btnHome;
+    private  LinearLayout btnUserInfo;
     private static final String BASE_URL = "http://192.168.127.1:8082/api/";
     List<Singer> singers;
 
@@ -28,6 +31,9 @@ public class MenuSecond extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_option);
+
+        btnHome = (LinearLayout) findViewById(R.id.btnHome);
+        btnUserInfo = (LinearLayout) findViewById(R.id.btnUserInfo);
 
 //        START API
         retrofit = new Retrofit.Builder()
@@ -83,5 +89,19 @@ public class MenuSecond extends AppCompatActivity {
         });
 
 
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MenuSecond.this,Frame4.class);
+                startActivity(i);
+            }
+        });
+        btnUserInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MenuSecond.this,HoSoNguoiDung.class);
+                startActivity(i);
+            }
+        });
     }
 }

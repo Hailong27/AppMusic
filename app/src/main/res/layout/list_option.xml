@@ -139,6 +139,7 @@
                 android:orientation="horizontal"
                 >
                 <LinearLayout
+                    android:id="@+id/btnHome"
                     android:layout_width="138dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -164,6 +165,7 @@
                     </ImageView>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/btnUserInfo"
                     android:layout_width="138dp"
                     android:layout_height="match_parent"
                     android:gravity="center"

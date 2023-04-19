@@ -126,6 +126,7 @@
         android:orientation="horizontal"
         >
         <LinearLayout
+            android:id="@+id/btnHome"
             android:layout_width="138dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -136,6 +137,7 @@
                 android:src="@drawable/baseline_disc_full_24"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/btnListOption"
             android:layout_width="138dp"
             android:layout_height="match_parent"
             >

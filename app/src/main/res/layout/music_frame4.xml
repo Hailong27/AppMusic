@@ -6,7 +6,7 @@
     android:layout_height="83dp"
     android:backgroundTint="@color/option_color"
     android:background="@drawable/roundstyle"
-    android:layout_marginBottom="8dp"
+    android:layout_marginBottom="5dp"
     >
     <LinearLayout
         android:layout_width="85dp"
@@ -26,47 +26,32 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="275dp"
+        android:layout_width="305dp"
         android:layout_height="83dp"
         android:layout_marginLeft="11dp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/name_music_f4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:lineHeight="83dp"
-            android:textSize="21dp"
-            android:text="Danh sách bài hát của bạn"
             android:gravity="center_vertical"
+            android:lineHeight="83dp"
+            android:text="Danh sách bài hát của bạn"
             android:textColor="@color/text_color"
-            ></TextView>
+            android:textSize="21dp"
+            android:textStyle="bold"></TextView>
+
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/name_singer_music_f4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lineHeight="83dp"
-            android:textSize="17dp"
-            android:text="Danh sách bài hát của bạn"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
+            android:lineHeight="83dp"
+            android:text="Danh sách bài hát của bạn"
             android:textColor="@color/text_color"
-            ></TextView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="50dp"
-        android:layout_height="83dp"
-        android:lineHeight="83dp"
-        android:textSize="21dp"
-        android:gravity="center_vertical"
-        android:textColor="@color/text_color"
-        >
-        <ImageView
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:src="@drawable/baseline_do_not_disturb_on_24"
-            >
-        </ImageView>
+            android:textSize="17dp"></TextView>
     </LinearLayout>
 </LinearLayout>

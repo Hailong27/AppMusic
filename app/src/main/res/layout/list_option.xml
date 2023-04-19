@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
+            android:paddingTop="20dp"
+            android:lineHeight="93dp"
+            android:paddingLeft="17dp"
+            android:text="MuZik"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="30dp">
+
+        </TextView>
+        <!--        Option 1 -->
+        <LinearLayout
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:backgroundTint="@color/option_color"
+            android:background="@drawable/roundstyle"
+            >
+            <LinearLayout
+                android:layout_width="85dp"
+                android:layout_height="83dp"
+                android:lineHeight="83dp"
+                android:textSize="21dp"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                >
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/baseline_view_list_24"
+                    >
+                </ImageView>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="83dp"
+                android:lineHeight="83dp"
+                android:textSize="21dp"
+                android:text="Danh sách bài hát của bạn"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_color"
+                ></TextView>
+        </LinearLayout>
+        <!--        Option 2 -->
+        <LinearLayout
+            android:id="@+id/list_favorite"
+            android:backgroundTint="@color/option_color"
+            android:background="@drawable/roundstyle"
+            android:layout_marginTop="11dp"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            >
+            <LinearLayout
+                android:layout_width="85dp"
+                android:layout_height="83dp"
+                android:lineHeight="83dp"
+                android:textSize="21dp"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                >
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/baseline_heart_broken_24"
+                    >
+                </ImageView>
+            </LinearLayout>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="83dp"
+                android:lineHeight="83dp"
+                android:textSize="21dp"
+                android:text="Danh sách bài hát yêu thích"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_color"
+                ></TextView>
+        </LinearLayout>
+        <!--        Option 3-->
+        <LinearLayout
+            android:id="@+id/list_download"
+            android:backgroundTint="@color/option_color"
+            android:background="@drawable/roundstyle"
+            android:layout_marginTop="11dp"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+
+
+            >
+            <LinearLayout
+                android:layout_width="85dp"
+                android:layout_height="83dp"
+                android:lineHeight="83dp"
+                android:textSize="21dp"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                >
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/baseline_folder_24"
+                    >
+                </ImageView>
+            </LinearLayout>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="83dp"
+                android:lineHeight="83dp"
+                android:textSize="21dp"
+                android:text="Danh sách đã tải về"
+                android:gravity="center_vertical"
+                android:textColor="@color/text_color"
+                ></TextView>
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#B5B7B6"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:id="@+id/btnHome"
+                    android:layout_width="138dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_disc_full_24">
+
+                    </ImageView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="138dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="#0C603B"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_view_list_24">
+
+                    </ImageView>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/btnUserInfo"
+                    android:layout_width="138dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/baseline_person_24">
+
+                    </ImageView>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

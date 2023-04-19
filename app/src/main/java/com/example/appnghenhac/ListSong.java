@@ -2,19 +2,81 @@ package com.example.appnghenhac;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.example.appnghenhac.HelperAPI.AuthInterceptor;
+import com.example.appnghenhac.models.Music;
+import com.example.appnghenhac.models.PlayList;
+
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.List;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListSong extends AppCompatActivity {
     private ImageView btnBack;
+    private Retrofit retrofit;
+    private List<Music> musics;
+    private ListView listSong;
+    private SongAdaper songAdaper;
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_song);
         btnBack = (ImageView) findViewById(R.id.list_song_back);
+        Intent i = getIntent();
+        int idSong = i.getIntExtra("idSong",0);
+        System.out.println(idSong);
+        SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "");
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        clientBuilder.addInterceptor(new AuthInterceptor(token));
+        System.out.println(token);
+        //        START API
+        retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(clientBuilder.build())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        APIService apiService = retrofit.create(APIService.class);
+        Call<List<Music>> call = apiService.getMusicByIdPlaylist(idSong);
+        call.enqueue(new Callback<List<Music>>() {
+
+
+            @Override
+            public void onResponse(Call<List<Music>> call, Response<List<Music>> response) {
+                if(response.isSuccessful()){
+                    musics = response.body();
+                    System.out.println(musics.get(0).nameMusic);
+                    songAdaper = new SongAdaper(musics);
+                    listSong = (ListView) findViewById(R.id.list_song);
+                    listSong.setAdapter(songAdaper);
+                }
+                else {
+                    System.out.println("loi");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Music>> call, Throwable t) {
+
+            }
+        });
+
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

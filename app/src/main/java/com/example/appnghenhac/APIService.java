@@ -11,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface APIService {
     @GET("singer")
@@ -19,6 +20,8 @@ public interface APIService {
     Call<List<Music>> getMusic();
     @GET("playlist")
     Call<List<PlayList>> getPlaylist();
+    @GET("playlist/{id}/musics")
+    Call<List<Music>> getMusicByIdPlaylist(@Path("id") int idSong);
 
     @POST("account/login")
     Call<LoginResponse> login(@Body RequestBody json);

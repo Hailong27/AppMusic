@@ -72,15 +72,16 @@
             android:layout_marginLeft="2dp"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="110dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/list_music_f4"
             >
-
         </ListView>
     </LinearLayout>
     <LinearLayout
@@ -95,12 +96,13 @@
             android:layout_width="138dp"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:background="@color/back"
             >
 
             <ImageView
                 android:layout_width="37dp"
                 android:layout_height="40dp"
-                android:src="@drawable/baseline_disc_full_24">
+                android:src="@drawable/baseline_disc_white_24">
 
             </ImageView>
         </LinearLayout>
@@ -109,14 +111,21 @@
             android:layout_width="138dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:background="#0C603B"
             >
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/baseline_view_list_24">
+                android:src="@drawable/baseline_view_list_back_24">
 
             </ImageView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="2dp"
+            android:layout_height="match_parent">
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/back"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/btn_user_info"

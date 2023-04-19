@@ -3,6 +3,7 @@ package com.example.appnghenhac;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -16,6 +17,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -33,6 +35,11 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        Intent i = getIntent();
+//        Integer position = Integer.parseInt(i.getStringExtra("index"));
+//
+//        System.out.println("xxx"+position);
 
         disk_img = (ImageView)findViewById(R.id.disk_img);
         choi_nhac = (ImageView)findViewById(R.id.choi_nhac);

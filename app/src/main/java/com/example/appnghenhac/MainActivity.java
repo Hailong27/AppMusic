@@ -41,7 +41,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity{
 
     private Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
     ImageView btn_back, disk_img, choi_nhac, shuffle, repeat, tym, dot_change, previous, next;
     TextView timeMusic, timeCurrent, txtNameMusic;
     View line_music;

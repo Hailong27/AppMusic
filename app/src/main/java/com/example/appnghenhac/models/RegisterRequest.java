@@ -3,35 +3,35 @@ package com.example.appnghenhac.models;
 public class RegisterRequest {
     public  String Email;
     public  String Password;
-    public  String Confirm;
+    public  String ConfirmPassword;
 
-    public RegisterRequest(String email, String password, String confirm) {
+    public RegisterRequest(String email, String password, String confirmPassword) {
         Email = email;
         Password = password;
-        Confirm = confirm;
+        ConfirmPassword = confirmPassword;
     }
 
     public String getEmail() {
         return Email;
     }
 
-    public String getPassword() {
-        return Password;
-    }
-
-    public String getConfirm() {
-        return Confirm;
-    }
-
     public void setEmail(String email) {
         Email = email;
+    }
+
+    public String getPassword() {
+        return Password;
     }
 
     public void setPassword(String password) {
         Password = password;
     }
 
-    public void setConfirm(String confirm) {
-        Confirm = confirm;
+    public String getConfirmPassword() {
+        return ConfirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        ConfirmPassword = confirmPassword;
     }
 }

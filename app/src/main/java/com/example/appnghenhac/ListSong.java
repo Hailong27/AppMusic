@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -38,6 +39,7 @@ public class ListSong extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_song);
         btnBack = (ImageView) findViewById(R.id.list_song_back);
+        listSong = (ListView) findViewById(R.id.list_song);
 //        Get id  playlist
         Intent i = getIntent();
         int idSong = i.getIntExtra("idPlaylist",0);
@@ -66,7 +68,6 @@ public class ListSong extends AppCompatActivity {
                     musics = response.body();
 //                    System.out.println(musics.get(0).nameMusic);
                     songAdaper = new SongAdaper(musics);
-                    listSong = (ListView) findViewById(R.id.list_song);
                     listSong.setAdapter(songAdaper);
                 }
                 else {
@@ -85,6 +86,18 @@ public class ListSong extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(ListSong.this,ListActivity.class);
                 startActivity(i);
+            }
+        });
+        listSong.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Music music_temp = (Music) songAdaper.getItem(i);
+                Intent intent = new Intent(ListSong.this,MainActivity.class);
+                //based on item add info to intent
+                intent.putExtra("idSong", music_temp.id);
+                startActivity(intent);
+
+
             }
         });
     }

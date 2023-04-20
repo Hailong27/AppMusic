@@ -76,14 +76,14 @@ public class MenuSecond extends AppCompatActivity {
         list_favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MenuSecond.this,ListActivity.class);
+                Intent i = new Intent(MenuSecond.this,ListFavorite.class);
                 startActivity(i);
             }
         });
         list_download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MenuSecond.this,ListActivity.class);
+                Intent i = new Intent(MenuSecond.this,ListDownload.class);
                 startActivity(i);
             }
         });

@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity2 extends AppCompatActivity {
 
     private Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
 
     private Music music;
 

@@ -31,9 +31,11 @@
             android:textColor="#EBEBEB"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/modify_info"
         android:layout_width="363dp"
         android:layout_height="68dp"
-        android:background="#4DD9D9D9"
+        android:backgroundTint="#4DD9D9D9"
+        android:background="@drawable/roundstyle"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="305dp">
         <ImageView
@@ -53,9 +55,11 @@
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/modify_pw"
         android:layout_width="363dp"
         android:layout_height="68dp"
-        android:background="#4DD9D9D9"
+        android:backgroundTint="#4DD9D9D9"
+        android:background="@drawable/roundstyle"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="382dp">
         <ImageView
@@ -77,7 +81,8 @@
     <LinearLayout
         android:layout_width="363dp"
         android:layout_height="68dp"
-        android:background="#4DD9D9D9"
+        android:backgroundTint="#4DD9D9D9"
+        android:background="@drawable/roundstyle"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="460dp">
         <ImageView
@@ -97,9 +102,11 @@
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/logout"
         android:layout_width="363dp"
         android:layout_height="68dp"
-        android:background="#4DD9D9D9"
+        android:backgroundTint="#4DD9D9D9"
+        android:background="@drawable/roundstyle"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="537dp">
         <ImageView

@@ -14,6 +14,7 @@
       android:layout_marginTop="10dp"
       android:layout_marginLeft="20dp">
     <ImageView
+        android:id="@+id/mdf_info_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_arrow_back_ios_24"
@@ -54,16 +55,17 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="#4DD9D9D9"
+      android:backgroundTint="#4DD9D9D9"
+      android:background="@drawable/roundstyle"
       android:layout_marginLeft="15dp"
       android:layout_marginRight="15dp"
       android:layout_marginTop="335dp">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-      android:text="Nguyễn Hải Long"
-      android:textSize="25dp"
-      android:textColor="#FFFFFF"
+        android:text="Nguyễn Hải Long"
+        android:textSize="25dp"
+        android:textColor="#FFFFFF"
         android:layout_marginLeft="10dp"
         />
   </LinearLayout>
@@ -83,7 +85,8 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="#4DD9D9D9"
+      android:backgroundTint="#4DD9D9D9"
+      android:background="@drawable/roundstyle"
       android:layout_marginLeft="15dp"
       android:layout_marginRight="15dp"
       android:layout_marginTop="435dp">
@@ -112,7 +115,8 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="#4DD9D9D9"
+      android:backgroundTint="#4DD9D9D9"
+      android:background="@drawable/roundstyle"
       android:layout_marginLeft="15dp"
       android:layout_marginRight="15dp"
       android:layout_marginTop="535dp">
@@ -132,7 +136,8 @@
       android:layout_marginLeft="10dp"
       android:layout_marginStart="20dp"
       android:layout_marginEnd="20dp"
-      android:background="#D9D9D9"
+      android:backgroundTint="#D9D9D9"
+      android:background="@drawable/roundstyle"
       >
     <TextView
         android:layout_width="match_parent"

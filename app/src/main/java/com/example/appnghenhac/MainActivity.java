@@ -267,7 +267,6 @@ public class MainActivity extends AppCompatActivity{
                         @Override
                         public void onClick(View view) {
                             mHandler.removeCallbacksAndMessages(null);
-//                            mHandler.getLooper().quit();
                             mediaPlayer.release();
                             Intent i = new Intent(MainActivity.this, Frame4.class);
                             startActivity(i);

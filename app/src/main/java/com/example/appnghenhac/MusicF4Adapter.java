@@ -1,24 +1,20 @@
 package com.example.appnghenhac;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.shapes.Shape;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.appnghenhac.models.Music;
-import com.example.appnghenhac.models.PlayList;
-import com.google.android.material.imageview.ShapeableImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MusicF4Adapter extends BaseAdapter {
     final List<Music> musics;
+
+    ImageView btn_add;
 
     public MusicF4Adapter(List<Music> musics) {
         this.musics = musics;
@@ -52,6 +48,15 @@ public class MusicF4Adapter extends BaseAdapter {
         Music music = (Music) getItem(position);
         ((TextView) viewMusic.findViewById(R.id.name_music_f4)).setText(music.nameMusic);
         ((TextView) viewMusic.findViewById(R.id.name_singer_music_f4)).setText(music.singer.nameSinger);
+
+        btn_add = (ImageView) viewMusic.findViewById(R.id.btn_add);
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModalListManager modalManager = new ModalListManager();
+                modalManager.showModal(convertView.getContext());
+            }
+        });
 //        if(music.singer.imageSinger != "No file selected."){
 //            ((ShapeableImageView) viewMusic.findViewById(R.id.image_music_f4)).setImageResource(music.singer.imageSinger);
 //        }

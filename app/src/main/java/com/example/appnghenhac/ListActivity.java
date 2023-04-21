@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -27,8 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListActivity extends AppCompatActivity {
     ImageView button_back;
+    Button btn_add_list;
     private Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
     ListView list_playlist;
     PlayListAdapter playListAdapter;
     List<PlayList> playlists;
@@ -37,6 +39,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playlist);
         button_back = (ImageView) findViewById(R.id.button_back);
+        btn_add_list = (Button)findViewById(R.id.btn_add_list);
 
 //        Fake data
 //        playlists = new ArrayList<>();
@@ -121,6 +124,13 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
+            }
+        });
+        btn_add_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModalAddListManager modalManager = new ModalAddListManager();
+                modalManager.showModal(view.getContext());
             }
         });
     }

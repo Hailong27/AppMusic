@@ -3,15 +3,12 @@ package com.example.appnghenhac;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,17 +18,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.appnghenhac.models.LoginRequest;
-import com.example.appnghenhac.models.LoginResponse;
 import com.example.appnghenhac.models.Music;
-import com.google.gson.Gson;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URL;
 
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,15 +37,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity{
 
     private Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
-    ImageView btn_back, disk_img, choi_nhac, shuffle, repeat, tym, dot_change, previous, next;
+    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
+    ImageView btn_back, disk_img, choi_nhac, shuffle, repeat, tym, dot_change, previous, next, btn_add, btn_download;
     TextView timeMusic, timeCurrent, txtNameMusic;
     View line_music;
     private int lastX;
     private Music music;
     private boolean isRepeat = false;
     private Animation animation;
-    private  String urlMusic = "http://192.168.56.1:8082/music/";
+    private  String urlMusic = "http://192.168.127.1:8082/music/";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -70,6 +66,8 @@ public class MainActivity extends AppCompatActivity{
         line_music = (View)findViewById(R.id.line_music);
         txtNameMusic = (TextView)findViewById(R.id.txtNameMusic);
         btn_back = (ImageView)findViewById(R.id.btn_back);
+        btn_add = (ImageView)findViewById(R.id.btn_add);
+        btn_download = (ImageView)findViewById(R.id.btn_download);
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate);
         disk_img.startAnimation(animation);
@@ -91,7 +89,7 @@ public class MainActivity extends AppCompatActivity{
                 if(response.isSuccessful()){
                     music = response.body();
                     txtNameMusic.setText(music.nameMusic);
-                    String path = "http://192.168.56.1:8082/music/"+music.fileMusic;
+                    String path = "http://192.168.127.1:8082/music/"+music.fileMusic;
                     MediaPlayer mediaPlayer = new MediaPlayer();
                     try {
                         mediaPlayer.setDataSource(path);
@@ -272,6 +270,23 @@ public class MainActivity extends AppCompatActivity{
                             startActivity(i);
                         }
                     });
+
+                    btn_add.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ModalListManager modalManager = new ModalListManager();
+                            modalManager.showModal(view.getContext());
+                        }
+                    });
+
+                    btn_download.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String fileUrl = "http://192.168.127.1:8082/music/" + music.fileMusic;
+                            String fileName = music.nameMusic;
+                            new DownloadTask().execute(fileUrl, fileName);
+                        }
+                    });
                 }
                 else {
                     System.out.println("Loi");
@@ -283,4 +298,43 @@ public class MainActivity extends AppCompatActivity{
             }
         });
     }
+    private class DownloadTask extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String fileUrl = params[0];
+            String fileName = params[1];
+            try {
+                URL url = new URL(fileUrl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.connect();
+                InputStream inputStream = conn.getInputStream();
+                FileOutputStream outputStream = new FileOutputStream(fileName);
+
+                byte[] buffer = new byte[1024];
+                int len;
+                while ((len = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, len);
+                }
+
+                outputStream.close();
+                inputStream.close();
+                return "Download completed";
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return "Malformed URL exception";
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "IO exception";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

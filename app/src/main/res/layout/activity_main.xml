@@ -55,6 +55,7 @@
             >
 
             <ImageView
+                android:id="@+id/btn_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="500dp"
@@ -63,6 +64,7 @@
                 />
 
             <ImageView
+                android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="500dp"
@@ -85,7 +87,7 @@
                 android:id="@+id/timeCurrent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="01:30"
+                android:text="00:00"
                 android:textColor="#0C603B"
                 android:textSize="18dp"
                 android:layout_marginTop="535dp"
@@ -119,7 +121,7 @@
             android:padding="20dp">
             <View
                 android:id="@+id/line_music"
-                android:layout_width="50dp"
+                android:layout_width="0dp"
                 android:layout_height="5dp"
                 android:background="#0C603B"
                 android:layout_marginTop="545dp"/>

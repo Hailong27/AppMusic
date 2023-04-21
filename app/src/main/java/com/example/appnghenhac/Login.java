@@ -17,13 +17,9 @@ import com.example.appnghenhac.models.LoginResponse;
 import com.example.appnghenhac.models.Singer;
 import com.google.gson.Gson;
 
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +34,7 @@ public class Login extends AppCompatActivity {
     EditText password;
     private Retrofit retrofit;
     LoginResponse loginResponse;
-    private static final String BASE_URL = "http:192.168.56.1:8082/api/";
+    private static final String BASE_URL = "http:192.168.127.1:8082/api/";
 
 
     @Override

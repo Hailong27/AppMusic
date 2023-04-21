@@ -32,7 +32,7 @@ public class ListSong extends AppCompatActivity {
     private List<Music> musics;
     private ListView listSong;
     private SongAdaper songAdaper;
-    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

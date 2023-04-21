@@ -30,7 +30,7 @@ public class ListActivity extends AppCompatActivity {
     ImageView button_back;
     Button btn_add_list;
     private Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
     ListView list_playlist;
     PlayListAdapter playListAdapter;
     List<PlayList> playlists;
@@ -129,7 +129,7 @@ public class ListActivity extends AppCompatActivity {
         btn_add_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ModalAddListManager modalManager = new ModalAddListManager();
+                ModalAddListManager modalManager = new ModalAddListManager(ListActivity.this);
                 modalManager.showModal(view.getContext());
             }
         });

@@ -48,7 +48,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onResponse(Call<Music> call, Response<Music> response) {
                 if(response.isSuccessful()){
                     music = response.body();
-                    String path = "http://192.168.127.1:8082/music/"+music.fileMusic;
+                    String path = "http://192.168.56.1:8082/music/"+music.fileMusic;
                     MediaPlayer mediaPlayer = new MediaPlayer();
                     try {
                         mediaPlayer.setDataSource(path);

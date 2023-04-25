@@ -41,6 +41,8 @@ public interface APIService {
     @POST("playlist")
     Call<String> addPlaylist(@Field("name") String name, @Field("file") File file);
 
+    @POST("add")
+    Call<String> addMusicToList(@Field("idMusic") int idMusic, @Field("idPlaylist") int idPlaylist);
 }
 
 

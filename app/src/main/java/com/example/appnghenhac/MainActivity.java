@@ -37,7 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity{
 
     private Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
     ImageView btn_back, disk_img, choi_nhac, shuffle, repeat, tym, dot_change, previous, next, btn_add, btn_download;
     TextView timeMusic, timeCurrent, txtNameMusic;
     View line_music;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity{
     private Music music;
     private boolean isRepeat = false;
     private Animation animation;
-    private  String urlMusic = "http://192.168.56.1:8082/music/";
+    private  String urlMusic = "http://192.168.127.1:8082/music/";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity{
                 if(response.isSuccessful()){
                     music = response.body();
                     txtNameMusic.setText(music.nameMusic);
-                    String path = "http://192.168.56.1:8082/music/"+music.fileMusic;
+                    String path = "http://192.168.127.1:8082/music/"+music.fileMusic;
                     MediaPlayer mediaPlayer = new MediaPlayer();
                     try {
                         mediaPlayer.setDataSource(path);
@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity{
                         @Override
                         public void onClick(View view) {
                             ModalListManager modalManager = new ModalListManager();
-                            modalManager.showModal(view.getContext());
+                            modalManager.showModal(view.getContext(), music.id);
                         }
                     });
 

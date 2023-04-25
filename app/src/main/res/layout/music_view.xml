@@ -43,10 +43,10 @@
         android:layout_gravity="center"
         >
         <ImageView
-            android:id="@+id/btn_add"
+            android:id="@+id/btn_delete"
             android:layout_width="23dp"
             android:layout_height="23dp"
-            android:src="@drawable/baseline_add_circle_outline_24"
+            android:src="@drawable/baseline_do_not_disturb_on_24"
             />
     </LinearLayout>
 </LinearLayout>

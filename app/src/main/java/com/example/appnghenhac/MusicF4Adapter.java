@@ -54,7 +54,7 @@ public class MusicF4Adapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 ModalListManager modalManager = new ModalListManager();
-                modalManager.showModal(convertView.getContext());
+                modalManager.showModal(view.getContext(), music.id);
             }
         });
 //        if(music.singer.imageSinger != "No file selected."){

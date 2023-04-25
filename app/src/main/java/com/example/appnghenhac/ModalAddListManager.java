@@ -32,7 +32,7 @@ public class ModalAddListManager {
 
     private Retrofit retrofit;
     private  String token;
-    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
     private  boolean checkCloseModal = false;
     public void closeModal(){
         if(checkCloseModal == true){
@@ -96,8 +96,9 @@ public class ModalAddListManager {
                     }
                 });
 //                closeModal();
-                modal.dismiss();
                 activity.recreate();
+                modal.dismiss();
+
 
 
 

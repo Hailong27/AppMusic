@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
-    android:layout_height="wrap_content">
+    android:layout_height="350dp"
+    android:backgroundTint="@color/option_color"
+    android:background="@drawable/roundstyle"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="Danh sách bài hát của bạn"
+        android:textStyle="bold"
+        android:textSize="23dp"
+        android:gravity="center"
+        android:textColor="@color/back"/>
     <ListView
         android:id="@+id/modalplaylist"
         android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+        android:layout_height="250dp"
+        android:layout_marginTop="45dp"/>
     <Button
         android:id="@+id/btn_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Close"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="300dp"
         android:layout_marginLeft="250dp"/>
 </FrameLayout>

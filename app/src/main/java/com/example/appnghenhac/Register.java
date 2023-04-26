@@ -35,7 +35,7 @@ public class Register extends AppCompatActivity {
 
     private Retrofit retrofit;
     RegisterResponse registerResponse;
-    private static final String BASE_URL = "http:192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http:192.168.56.1:8082/api/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.appnghenhac.HelperAPI.AuthInterceptor;
 import com.example.appnghenhac.models.Music;
@@ -27,13 +28,13 @@ public class ModalListManager {
     private Retrofit retrofit;
     private List<PlayList> playLists;
     private ListModalAdapter listModalAdapter;
-    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
     private  boolean checkCloseModal = false;
     public void showModal(Context context, int idMusic) {
         modal = new Dialog(context);
         modal.setContentView(R.layout.modal_list);
         modal.setCancelable(false);
-
+        System.out.println(idMusic);
         Button closeButton = modal.findViewById(R.id.btn_close);
         ListView modalplaylist = modal.findViewById(R.id.modalplaylist);
 
@@ -71,9 +72,8 @@ public class ModalListManager {
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkCloseModal == true){
-                    modal.dismiss();
-                }
+                modal.dismiss();
+
             }
         });
 
@@ -99,10 +99,11 @@ public class ModalListManager {
                         if(response.isSuccessful()){
                             String res = response.body();
                             System.out.println(res);
-                            checkCloseModal = true;
+
                         }
                         else {
                             System.out.println("Loi");
+                            Toast.makeText(context,"Bài hát đã có trong danh sách.",Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -111,7 +112,9 @@ public class ModalListManager {
                     public void onFailure(Call<String> call, Throwable t) {
                         System.out.println(t.getMessage());
                     }
+
                 });
+                modal.dismiss();
             }
         });
     }

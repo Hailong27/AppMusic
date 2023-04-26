@@ -24,7 +24,7 @@ public class MenuSecond extends AppCompatActivity {
 
     private LinearLayout btnHome;
     private  LinearLayout btnUserInfo;
-    private static final String BASE_URL = "http://192.168.127.1:8082/api/";
+    private static final String BASE_URL = "http://192.168.56.1:8082/api/";
     List<Singer> singers;
 
     @Override

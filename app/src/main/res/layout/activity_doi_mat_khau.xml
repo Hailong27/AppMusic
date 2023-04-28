@@ -49,9 +49,9 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="105dp">
         <EditText
+            android:id="@+id/dmk_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nguyễn Hải Long"
             android:textSize="25dp"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="10dp"
@@ -80,9 +80,9 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="205dp">
         <EditText
+            android:id="@+id/dmk_new_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="hailong270201@gmail.com"
             android:textSize="25dp"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="10dp"
@@ -97,7 +97,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Xác nhận mật khẩu"
+            android:text=""
             android:textSize="22dp"
             android:textColor="#FFFFFF"
             />
@@ -111,9 +111,9 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="305dp">
         <EditText
+            android:id="@+id/dmk_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0363534333"
             android:textSize="25dp"
             android:textColor="#FFFFFF"
             android:layout_marginLeft="10dp"
@@ -143,6 +143,7 @@
         android:background="@drawable/roundstyle"
         >
         <TextView
+            android:id="@+id/dmk_update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Lưu"

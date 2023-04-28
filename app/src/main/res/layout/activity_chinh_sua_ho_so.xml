@@ -61,6 +61,7 @@
       android:layout_marginRight="15dp"
       android:layout_marginTop="335dp">
     <EditText
+        android:id="@+id/cshs_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nguyễn Hải Long"
@@ -91,6 +92,7 @@
       android:layout_marginRight="15dp"
       android:layout_marginTop="435dp">
     <EditText
+        android:id="@+id/cshs_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="hailong270201@gmail.com"
@@ -121,6 +123,7 @@
       android:layout_marginRight="15dp"
       android:layout_marginTop="535dp">
     <EditText
+        android:id="@+id/cshs_phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="0363534333"
@@ -130,6 +133,7 @@
         />
   </LinearLayout>
   <LinearLayout
+      android:id="@+id/cshs_update"
       android:layout_width="match_parent"
       android:layout_height="50dp"
       android:layout_marginTop="630dp"
@@ -139,16 +143,17 @@
       android:backgroundTint="#D9D9D9"
       android:background="@drawable/roundstyle"
       >
+
     <TextView
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lưu"
-        android:textSize="25dp"
-        android:textStyle="bold"
+        android:layout_height="23dp"
         android:layout_gravity="center"
         android:gravity="center"
+        android:text="Lưu"
         android:textColor="@color/back"
-        />
+        android:textSize="25dp"
+        android:textStyle="bold" />
   </LinearLayout>
 
   </FrameLayout>

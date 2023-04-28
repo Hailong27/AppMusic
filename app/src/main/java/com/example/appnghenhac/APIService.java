@@ -6,6 +6,7 @@ import com.example.appnghenhac.models.PlayList;
 import com.example.appnghenhac.models.RegisterRequest;
 import com.example.appnghenhac.models.RegisterResponse;
 import com.example.appnghenhac.models.Singer;
+import com.example.appnghenhac.models.User;
 
 import java.io.File;
 import java.util.List;
@@ -18,9 +19,12 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface APIService {
+    @GET("account/my-profile")
+    Call<User> getUserLogin();
     @GET("singer")
     Call<List<Singer>> getSinger();
     @GET("music")
@@ -40,6 +44,14 @@ public interface APIService {
     @FormUrlEncoded
     @POST("playlist")
     Call<String> addPlaylist(@Field("name") String name, @Field("file") File file);
+
+    @FormUrlEncoded
+    @PUT("account/update")
+    Call<String> updateProfile(@Field("name") String name,@Field("email") String email,@Field("phoneNumber") String phoneNumber,@Field("dob") String dob);
+
+    @FormUrlEncoded
+    @PUT("account/change-password")
+    Call<String> changePassword(@Field("pw") String pw,@Field("cfpw") String cfpw, @Field("password") String password);
 
     @FormUrlEncoded
     @POST("playlist/add")

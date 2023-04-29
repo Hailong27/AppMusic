@@ -15,6 +15,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -56,6 +57,12 @@ public interface APIService {
     @FormUrlEncoded
     @POST("playlist/add")
     Call<String> addMusicToList(@Field("IdMusic") int IdMusic, @Field("IdPlaylist") int IdPlaylist);
+
+    @DELETE("playlist/{IdPlaylist}/music/{IdMusic}")
+    Call<String> deleteMusicFromPlaylist(@Path("IdPlaylist") int idPlaylist,@Path("IdMusic") int idMusic);
+
+    @DELETE("playlist/{idPlaylist}")
+    Call<String> deletePlaylist(@Path("idPlaylist") int idPlaylist);
 }
 
 

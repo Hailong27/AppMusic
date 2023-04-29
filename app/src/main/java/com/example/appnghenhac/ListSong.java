@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.appnghenhac.HelperAPI.AuthInterceptor;
 import com.example.appnghenhac.models.Music;
@@ -28,6 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ListSong extends AppCompatActivity {
     private ImageView btnBack;
+    private TextView playlist_name;
     private Retrofit retrofit;
     private List<Music> musics;
     private ListView listSong;
@@ -43,7 +45,10 @@ public class ListSong extends AppCompatActivity {
 //        Get id  playlist
         Intent i = getIntent();
         int idSong = i.getIntExtra("idPlaylist",0);
-        System.out.println(idSong);
+        String namePlaylist = i.getStringExtra("namePlaylist");
+        playlist_name = (TextView) findViewById(R.id.playlist_name);
+        playlist_name.setText(namePlaylist);
+
 
 //        API
         SharedPreferences sharedPreferences = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
@@ -67,7 +72,7 @@ public class ListSong extends AppCompatActivity {
                 if(response.isSuccessful()){
                     musics = response.body();
 //                    System.out.println(musics.get(0).nameMusic);
-                    songAdaper = new SongAdaper(musics);
+                    songAdaper = new SongAdaper(musics,idSong,token);
                     listSong.setAdapter(songAdaper);
                 }
                 else {

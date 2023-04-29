@@ -93,7 +93,7 @@ public class ListActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     playlists = response.body();
 //                    System.out.println(playlists.get(0).name);
-                    playListAdapter = new PlayListAdapter(playlists);
+                    playListAdapter = new PlayListAdapter(playlists,token);
                     list_playlist.setAdapter(playListAdapter);
                 }
                 else {
@@ -121,6 +121,7 @@ public class ListActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListActivity.this,ListSong.class);
                 //based on item add info to intent
                 intent.putExtra("idPlaylist", playList_temp.id);
+                intent.putExtra("namePlaylist",playList_temp.name);
                 startActivity(intent);
             }
         });
